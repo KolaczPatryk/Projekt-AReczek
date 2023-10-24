@@ -5,13 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
-using AndroidRuntimePermissionsNamespace;
-using UnityEngine.UI;
+
 
 public class FileManager : MonoBehaviour
 {
 
-    public GameObject debugText;
     private string selectedFilePath;
     public void OpenFile()
     {
@@ -26,24 +24,15 @@ public class FileManager : MonoBehaviour
         AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
 
         // SprawdŸ, czy u¿ytkownik ma uprawnienia do odczytu plików z pamiêci urz¹dzenia
-        //bool hasPermission = Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead);
-        AndroidRuntimePermissions.Permission result = AndroidRuntimePermissions.RequestPermission("android.permission.READ_EXTERNAL_STORAGE");
-        if(result == AndroidRuntimePermissions.Permission.Granted)
-        {
-            selectedFilePath = Application.persistentDataPath;
-            currentActivity.Call("startActivityForResult", intentObject, 0);
-        }
-        else
-        {
-            
-            Debug.Log("Nie dzia³a");
-        }
+        bool hasPermission = Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead);
+
         // Wyœwietl komunikat o b³êdzie, jeœli u¿ytkownik nie ma uprawnieñ
         /*if (!hasPermission)
         {
             Debug.Log("U¿ytkownik nie ma uprawnieñ do odczytu plików z pamiêci urz¹dzenia.");
             return;
         }*/
+            currentActivity.Call("startActivityForResult", intentObject, 0);
         
     } // Zmienna do przechowywania œcie¿ki wybranego pliku
 
@@ -68,5 +57,4 @@ public class FileManager : MonoBehaviour
             }
         }
     }
-
 }

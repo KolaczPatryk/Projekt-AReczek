@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
@@ -35,6 +36,11 @@ public class FileManager : MonoBehaviour
             currentActivity.Call("startActivityForResult", intentObject, 0);
         
     } // Zmienna do przechowywania œcie¿ki wybranego pliku
+
+    internal static void WriteAllBytes(object filepath, byte[] bytes)
+    {
+        throw new NotImplementedException();
+    }
 
     // Ta metoda obs³uguje rezultat wyboru pliku
     public void onActivityResult(int requestCode, int resultCode, AndroidJavaObject data)

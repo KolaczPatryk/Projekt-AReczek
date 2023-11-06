@@ -670,8 +670,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1928781196}
-        m_TargetAssemblyTypeName: FileManager, Assembly-CSharp
-        m_MethodName: OpenFile
+        m_TargetAssemblyTypeName: NativeFilePickerScript, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1928781194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ab4964842631e4e8f95967e61d6aaa, type: 3}
+  m_Script: {fileID: 11500000, guid: b0a12d9e78cfdd1408b3c7e83180d87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1987254240

@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gonet/MainMenu.unity
     guid: 9748fbb2cd6091d4dbac58f24cfe491a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gonet/BlankAR.unity
     guid: 4c561c5fd5e05964fb56b9a012b86cd1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/faleeeeek.unity
     guid: 61eca605e3579ec4a949e6ad65a431e7
   m_configObjects:

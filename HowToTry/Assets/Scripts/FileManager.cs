@@ -102,7 +102,6 @@ public class FileManager : MonoBehaviour
                 Debug.Log("Wybrany plik: " + selectedFilePath);
 
                 // Przejdü do sceny z kamerπ i modelem
-                selectedObject.modelPath = selectedFilePath;
                 SceneManager.LoadScene("BlankAR");
             }
             else

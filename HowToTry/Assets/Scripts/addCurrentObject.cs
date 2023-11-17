@@ -52,7 +52,7 @@ public class addCurrentObject : MonoBehaviour
     void SceneWithObject(string loadedModelPath)
     {
         //Za³aduj scene z modelem
-        selectedObject.modelPath = loadedModelPath;
+    //   selectedObject.modelPath = loadedModelPath;
         SceneManager.LoadScene("BlankAR");    
     }
 }

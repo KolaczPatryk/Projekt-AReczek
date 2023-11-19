@@ -4,6 +4,7 @@ using UnityEngine;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QRCodeScanner : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class QRCodeScanner : MonoBehaviour
     private TextMeshProUGUI textResult;
     [SerializeField]
     private RectTransform scanZone;
+    public string resultLink;
+
 
     private bool camAvaible;
     private WebCamTexture cameratexture;
@@ -56,6 +59,9 @@ public class QRCodeScanner : MonoBehaviour
             if(result !=null)
             {
                 textResult.text = result.Text;
+                resultLink = result.Text;
+                holdURL.linkURL = resultLink;
+                SceneManager.LoadScene("LoadedEcho3DObject");
             }
             else
             {

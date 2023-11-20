@@ -11,7 +11,6 @@ public class loadURL : MonoBehaviour
     void Start()
     {
         string url = holdURL.linkURL;
-        Debug.Log(url + "2137KURWO");
-        echo3D.GetComponent<Echo3DHologram>().queryURL = url;
+        Debug.Log(url + "HERE");
     }
 }

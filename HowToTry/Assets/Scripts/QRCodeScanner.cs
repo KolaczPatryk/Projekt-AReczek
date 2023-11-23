@@ -61,7 +61,7 @@ public class QRCodeScanner : MonoBehaviour
                 textResult.text = result.Text;
                 resultLink = result.Text;
                 holdURL.linkURL = resultLink;
-                SceneManager.LoadScene("LoadedEcho3DObject");
+                SceneManager.LoadScene("LoadedObjectFromQR");
             }
             else
             {

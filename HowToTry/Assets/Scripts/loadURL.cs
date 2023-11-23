@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class loadURL : MonoBehaviour
 {
-
-    public Object echo3D;
+    
     // Start is called before the first frame update
     void Start()
     {
         string url = holdURL.linkURL;
-        echo3D.GetComponent<Echo3DHologram>().queryURL = url;
-
     }
 }

@@ -1,5 +1,7 @@
+using Dummiesman;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +14,7 @@ public class staticListOfObjects : MonoBehaviour
 
     void Start()
     {
+        LoadNewModelsToList();
         string toChoose = holdURL.linkURL;
         Object choosenOBJ = FindModel(toChoose);
         if(choosenOBJ != null)
@@ -41,6 +44,20 @@ public class staticListOfObjects : MonoBehaviour
         else
         {
             Debug.Log("No i chuj no i czeœæ");
+        }
+    }
+
+    void LoadNewModelsToList()
+    {
+        foreach(string path in holdURL.newModels)
+        {
+            GameObject loadingModel;
+            loadingModel = new OBJLoader().Load(path);
+            loadingModel.name = Path.GetFileNameWithoutExtension(path);
+            if(!models.Contains(loadingModel))
+            {
+                models.Add(loadingModel);
+            }
         }
     }
 

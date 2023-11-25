@@ -57,18 +57,27 @@ public class QRGenerator : MonoBehaviour
 
         rawImage.texture = encodedText;
 
-        byte[] imgBytes = encodedText.EncodeToPNG();
-        string imgPath = Path.Combine(Application.persistentDataPath, txtInp+".png");
+        // Œcie¿ka do folderu kamery
+        string cameraDirectory = "/storage/emulated/0/DCIM/Camera/";
 
-        File.WriteAllBytes(imgPath, imgBytes);
+        // Œcie¿ka docelowa dla obrazka w katalogu kamery
+        string destinationFilePath = Path.Combine(cameraDirectory, txtInp+".png");
 
-        AndroidJavaClass unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject currentActivity = unityClass.GetStatic<AndroidJavaObject>("currentActivity");
-        AndroidJavaObject context = currentActivity.Call<AndroidJavaObject>("getApplicationContext");
-        string[] paths = { imgPath };
-        string[] mediaType = { "image/png" };
-        AndroidJavaClass mediaScannerClass = new AndroidJavaClass("android.media.MediaScannerConnection");
-        mediaScannerClass.CallStatic("scanFile", context, paths, mediaType, null);
+        // Zapisz obrazek jako PNG na urz¹dzeniu
+        byte[] imageBytes = encodedText.EncodeToPNG();
+
+        // Zapisz plik do katalogu kamery
+        File.WriteAllBytes(destinationFilePath, imageBytes);
+
+        // Odœwie¿enie galerii
+        AndroidJavaClass classPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        AndroidJavaObject objActivity = classPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        AndroidJavaClass classUri = new AndroidJavaClass("android.net.Uri");
+        AndroidJavaObject objIntent = new AndroidJavaObject("android.content.Intent", "android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+        AndroidJavaObject objFile = new AndroidJavaObject("java.io.File", destinationFilePath);
+        AndroidJavaObject objUri = classUri.CallStatic<AndroidJavaObject>("fromFile", objFile);
+        objIntent.Call<AndroidJavaObject>("setData", objUri);
+        objActivity.Call("sendBroadcast", objIntent);
     }
 
     private void QR4ChoosenOne()

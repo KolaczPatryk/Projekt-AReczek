@@ -18,17 +18,18 @@ public class NativeFilePickerScript : MonoBehaviour
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
             if (path == null)
-                Debug.Log("Operation cancelled");
+                Debug.Log("Operacja anulowana");
             else
-            {
+            {   
+                int index = path.LastIndexOf('/');
+                String temp = path.Substring(index);
                 FileInfo file = new FileInfo(path);
                 if (!file.Exists)
                 {
                     file.CopyTo(Application.persistentDataPath);
                 }
-                Debug.Log("Scie¿ka modelu: "+path);
                 Debug.Log("Persistend data path:"+Application.persistentDataPath);
-                script.setModelPath(Application.persistentDataPath+ "/Koenigsegg.obj");
+                script.setModelPath(temp);
             }
 
         }, new string[] { "*/*" }

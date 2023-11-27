@@ -1,8 +1,0 @@
-{
-    "name" : "echo3d.echounitysdk",
-    "references": ["glTFast"],
-    "optionalUnityReferences": [],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false
-}

@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.XR.CoreUtils;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 public class selectedObject : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class selectedObject : MonoBehaviour
 
     private void Start()
     {
-        //test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
+        test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
     }
 
     public string modelPath;
@@ -30,22 +31,26 @@ public class selectedObject : MonoBehaviour
         try
         {
             loadedObject = new OBJLoader().Load(Application.persistentDataPath+path);
+            var obj = GameObject.Find(path.Substring(0, path.Length - 4));
             var cube = GameObject.Find("Cube");
-            var bounds = GameObject.Find("Bounds");
-            /*Vector3 parentSize = cube.GetComponent<BoxCollider>().bounds.size;
-            while (cube.GetComponent<Renderer>().bounds.extents.x > parentSize.x   ||
-                    cube.GetComponent<Renderer>().bounds.extents.y > parentSize.y ||
-                        cube.GetComponent<Renderer>().bounds.extents.z > parentSize.z)
+            /*
+            var renderers = loadedObject.GetComponentsInChildren<Renderer>();
+            var bounds = renderers[0].bounds;
+            for (var i = 1; i < renderers.Length; ++i)
+                bounds.Encapsulate(renderers[i].bounds);
+            Vector3 parentSize = cube.GetComponent<BoxCollider>().bounds.size;
+            while (bounds.extents.x > parentSize.x   ||
+                    bounds.extents.y > parentSize.y ||
+                        bounds.extents.z > parentSize.z)
             {
-                cube.transform.localScale *= 0.9f;
-            }*/
-            loadedObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-
-            loadedObject.transform.position = cube.transform.position;
-
-
-
-            Debug.Log("ok");
+                loadedObject.transform.localScale *= 0.9f;
+            }
+            */
+            
+            var x = 4.43f;
+            var y = 2.15f;
+            var z = 2.00f;
+            loadedObject.transform.localScale = new Vector3(loadedObject.transform.localScale.x/x,loadedObject.transform.localScale.y/y,loadedObject.transform.localScale.z/z);
         }
         catch (Exception ex)
         {
@@ -63,12 +68,12 @@ public class selectedObject : MonoBehaviour
 
     public void test(string path)
     {
+
         Debug.Log("�cie�ka modelu w selectedObject.cs" + path);
         try
         {
             loadedObject = new OBJLoader().Load(path);
             var cube = GameObject.Find("Cube");
-            var bounds = GameObject.Find("Bounds");
             /*Vector3 parentSize = cube.GetComponent<BoxCollider>().bounds.size;
             while (cube.GetComponent<Renderer>().bounds.extents.x > parentSize.x   ||
                     cube.GetComponent<Renderer>().bounds.extents.y > parentSize.y ||
@@ -76,9 +81,15 @@ public class selectedObject : MonoBehaviour
             {
                 cube.transform.localScale *= 0.9f;
             }*/
-            loadedObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            var x = 4.43f;
+            var y = 2.15f;
+            var z = 2.00f;
+            loadedObject.transform.localScale = new Vector3(loadedObject.transform.localScale.x/x,loadedObject.transform.localScale.y/y,loadedObject.transform.localScale.z/z);
 
-            loadedObject.transform.position = cube.transform.position;
+            //loadedObject.transform.localScale = new Vector3(bounds2.size.x/bounds.size.x, bounds2.size.y/bounds.size.y, bounds2.size.z/bounds.size.z);
+            //normalizeasset(loadedObject);
+
+            //loadedObject.transform.position = cube.transform.position;
 
 
 

@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gonet/MainMenu.unity
     guid: 9748fbb2cd6091d4dbac58f24cfe491a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gonet/BlankAR.unity
     guid: 4c561c5fd5e05964fb56b9a012b86cd1
   - enabled: 0
     path: Assets/Scenes/faleeeeek.unity
     guid: 61eca605e3579ec4a949e6ad65a431e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Patryk2.unity
     guid: f8ac914e7d9ac804d97af18c923fe9a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gonet/QR_Maker.unity
     guid: f7c9f20f4fab35f4888fb6377b277767
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gonet/QReader.unity
     guid: 505c8708398fe284f9af112e4535e752
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gonet/LoadedObjectFromQR.unity
     guid: 3901095aefda91e48ae887ed56e978d5
   m_configObjects:

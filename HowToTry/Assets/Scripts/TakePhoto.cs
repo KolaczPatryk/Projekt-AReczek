@@ -42,10 +42,10 @@ public class TakeARPhoto : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         // Uzyskaj teksturê z kamery AR
-        Texture2D texture = arCameraManager.GetTexture();
+        //Texture2D texture = arCameraManager.GetTexture();
 
         // Zapisz zdjêcie na dysku
-        SaveScreenshot(texture);
+        //SaveScreenshot(texture);
 
         Debug.Log("Zdjêcie zrobione!");
 

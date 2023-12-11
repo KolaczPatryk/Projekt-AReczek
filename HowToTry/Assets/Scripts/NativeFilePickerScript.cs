@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class NativeFilePickerScript : MonoBehaviour
 {
+    selectedObject script = new selectedObject();
+
     private void Start()
     {
         DontDestroyOnLoad(this);
     }
-    selectedObject script = new selectedObject();
     public void Load()
     {
         SceneManager.LoadScene("BlankAR");

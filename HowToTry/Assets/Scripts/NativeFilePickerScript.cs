@@ -15,7 +15,7 @@ public class NativeFilePickerScript : MonoBehaviour
     }
     public void Load()
     {
-        SceneManager.LoadScene("BlankAR");
+        SceneManager.LoadScene("Patryk2");
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
             if (path == null)

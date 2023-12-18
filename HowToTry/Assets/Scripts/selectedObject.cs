@@ -19,7 +19,7 @@ public class selectedObject : MonoBehaviour
 
     private void Start()
     {
-        test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
+        //test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
     }
 
     public string modelPath;
@@ -33,6 +33,9 @@ public class selectedObject : MonoBehaviour
             loadedObject = new OBJLoader().Load(Application.persistentDataPath+path);
             var obj = GameObject.Find(path.Substring(0, path.Length - 4));
             var cube = GameObject.Find("Cube");
+
+            cube = loadedObject;
+            //PrefabUtility.SaveAsPrefabAssetAndConnect(cube, loadedObject.name);
             /*
             var renderers = loadedObject.GetComponentsInChildren<Renderer>();
             var bounds = renderers[0].bounds;

@@ -15,7 +15,7 @@ public class selectedObject : MonoBehaviour
 
     private void Start()
     {
-        //test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
+        test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
     }
 
     public string modelPath;

@@ -25,7 +25,8 @@ public class NativeFilePickerScript : MonoBehaviour
                 int index = path.LastIndexOf('/');
                 String temp = path.Substring(index);
                 FileInfo file = new FileInfo(path);
-                if (!file.Exists)
+                
+                if (!System.IO.File.Exists(path))
                 {
                     file.CopyTo(Application.persistentDataPath);
                 }

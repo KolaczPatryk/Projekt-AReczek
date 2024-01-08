@@ -8,6 +8,7 @@ using System.Linq;
 public class selectedObject : MonoBehaviour
 {
     public static selectedObject Instance { get; private set; }
+    private GameObject parentObject;
     void OnEnable()
     {
         Instance = this;
@@ -15,7 +16,9 @@ public class selectedObject : MonoBehaviour
 
     private void Start()
     {
-        test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
+        //test("C:/Users/m.skoncej/Downloads/FBX-20231106T145744Z-001/FBX/Koenigsegg.obj");
+        //skrypt do robienia dzieci
+        
     }
 
     public string modelPath;
@@ -29,7 +32,9 @@ public class selectedObject : MonoBehaviour
             loadedObject = new OBJLoader().Load(Application.persistentDataPath + path);
             var obj = GameObject.Find(path.Substring(0, path.Length - 4));
             var cube = GameObject.Find("Cube");
-
+            loadedObject.gameObject.tag = "Model";
+            parentObject = GameObject.FindGameObjectWithTag("Model");
+            loadedObject.transform.parent = parentObject.transform;
             //cube = loadedObject;
             //PrefabUtility.SaveAsPrefabAssetAndConnect(cube, loadedObject.name);
             /*
@@ -50,6 +55,9 @@ public class selectedObject : MonoBehaviour
             var y = 2.15f;
             var z = 2.00f;
             loadedObject.transform.localScale = new Vector3(loadedObject.transform.localScale.x / x, loadedObject.transform.localScale.y / y, loadedObject.transform.localScale.z / z);
+            loadedObject.AddComponent<MeshFilter>();
+            loadedObject.AddComponent<MeshRenderer>();
+            MeshCombine(loadedObject);
         }
         catch (Exception ex)
         {

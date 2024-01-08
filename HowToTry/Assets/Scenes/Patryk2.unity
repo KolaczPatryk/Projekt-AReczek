@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778948415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cefa86f0ded2fa3408624bad9ae4de79, type: 3}
   m_Name: 
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778948415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18903116e0e9b7645a93eec09990c09f, type: 3}
   m_Name: 
@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778948415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e885c7f6efc7f34fadab18370044e9e, type: 3}
   m_Name: 
@@ -2046,11 +2046,11 @@ GameObject:
   - component: {fileID: 893477311}
   m_Layer: 0
   m_Name: Sofa
-  m_TagString: Untagged
+  m_TagString: Model
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &893477308
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3022,7 +3022,7 @@ MonoBehaviour:
   arCameraManager: {fileID: 1354141928}
   arCamera: {fileID: 1354141926}
   captureButton: {fileID: 1532181364}
-  cameraDirectory: /storage/emulated/0/Download
+  cameraDirectory: /storage/DCIM/Camera
 --- !u!1 &1541053477
 GameObject:
   m_ObjectHideFlags: 0

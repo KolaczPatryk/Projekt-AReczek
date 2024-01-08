@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 9cc2474430a20b447bf9e9f7bee261b8
-  - enabled: 1
     path: Assets/Scenes/Patryk2.unity
     guid: f8ac914e7d9ac804d97af18c923fe9a2
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9cc2474430a20b447bf9e9f7bee261b8
   - enabled: 1
     path: Assets/Scenes/Gonet/QR_Scanner.unity
     guid: 505c8708398fe284f9af112e4535e752

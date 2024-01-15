@@ -7,24 +7,27 @@ using System.IO;
 
 public class TakeARPhoto : MonoBehaviour
 {
-    [SerializeField] private ARCameraManager arCameraManager;
-    [SerializeField] private Camera arCamera;
-    [SerializeField] private Button captureButton;
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private string cameraDirectory;
-
+    public ARCameraManager arCameraManager;
+    public Camera arCamera;
+    public Button captureButton;
+    public string cameraDirectory;
+    //private string cameraDirectory;
     
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
+        //cameraDirectory = Application.persistentDataPath;
+        // SprawdŸ, czy ARCameraManager zosta³ przypisany
         if (arCameraManager == null)
         {
             Debug.LogError("ERROR: ARCameraManager nie zosta³ przypisany!");
             return;
         }
+
+        // SprawdŸ, czy przycisk zosta³ przypisany
         if (captureButton != null)
         {
+            // Dodaj funkcjê do przycisku, aby wywo³ywa³ metodê CapturePhoto
             captureButton.onClick.AddListener(CapturePhoto);
         }
         else
@@ -40,13 +43,34 @@ public class TakeARPhoto : MonoBehaviour
 
     IEnumerator TakeScreenshot()
     {
+        // Poczekaj na klatki kamery, aby mieæ aktualny obraz przed zrobieniem zdjêcia
         yield return new WaitForEndOfFrame();
-        canvas.SetActive(false);
+
+        // Uzyskaj teksturê z kamery AR
         Texture2D texture = CaptureCameraImage();
         Debug.Log("INFO: Zdjêcie zrobione!");
+        // Zapisz zdjêcie na dysku
         SaveScreenshot(texture);
+
+        
+
+        // Mo¿esz tak¿e przetworzyæ dalej lub wyœwietliæ miniaturê, itp.
     }
     
+    //void SaveScreenshot(Texture2D texture)
+    //{
+    //    // Generuj unikaln¹ nazwê pliku na podstawie daty i godziny
+    //    string fileName = "AR_Screenshot_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+
+    //    // Zapisz teksturê jako plik PNG
+    //    byte[] bytes = texture.EncodeToPNG();
+    //    System.IO.File.WriteAllBytes(System.IO.Path.Combine(Application.persistentDataPath, fileName), bytes);
+
+
+
+
+    //    Debug.Log("INFO: Zapisano zdjêcie w " + cameraDirectory + "/" + fileName);
+    //}
 
     void SaveScreenshot(Texture2D texture)
     {
@@ -75,13 +99,23 @@ public class TakeARPhoto : MonoBehaviour
 
     Texture2D CaptureCameraImage()
     {
-        
+        // Uzyskaj obraz z kamery AR
+        //Camera arCamera = arCameraManager.GetComponent<Camera>();
+
+        //if (arCamera == null)
+        //{
+        //    Debug.LogError("ERROR: Nie mo¿na znaleŸæ komponentu Camera w ARCameraManager.");
+        //    return null;
+        //}
+
+        // Utwórz now¹ teksturê i wczytaj dane pikseli z aktualnej klatki
+        //RenderTexture renderTexture = arCamera.targetTexture;
+        //RenderTexture renderTexture = arCamera.targetTexture;0
         Texture2D texture = new Texture2D(Screen.width, Screen.height);
         texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         texture.Apply();
 
         // Resetuj stan RenderTexture
-        canvas.SetActive(true);
         RenderTexture.active = null;
 
         return texture;

@@ -14,13 +14,16 @@ public class QRGenerator : MonoBehaviour
     private RawImage rawImage;
     [SerializeField]
     private TMP_InputField textInput;
+    [SerializeField]
+    
 
     private Texture2D encodedText;
 
     // Start is called before the first frame update
     void Start()
     {
-        encodedText = new Texture2D(256, 256);    
+        encodedText = new Texture2D(256, 256);
+        
     }
 
     private Color32[] Encode(string textForEncoding, int width, int height)

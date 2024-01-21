@@ -16,6 +16,8 @@ public class SetObjectOn : MonoBehaviour
     private ARPlaneManager planeManager;
     private List<ARRaycastHit> rayHits = new List<ARRaycastHit>();
 
+    GameObject gmObj;
+
     private void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
@@ -44,29 +46,47 @@ public class SetObjectOn : MonoBehaviour
         {
             return;
         }
-
-        if (raycastManager.Raycast(finger.currentTouch.screenPosition, rayHits, TrackableType.PlaneWithinPolygon))
+        if (finger.currentTouch.tapCount == 0)
         {
-            foreach(ARRaycastHit rayHit in rayHits)
+            if (raycastManager.Raycast(finger.currentTouch.screenPosition, rayHits, TrackableType.PlaneWithinPolygon))
             {
-                Pose rayPose = rayHit.pose;
-                GameObject gmObj = Instantiate(prefabs, rayPose.position, rayPose.rotation);// <-- Tu inicjalizuje obiekt. Testowa³em na sztywnym Cube.
-                                                                                            // Przy sklejaniu apk bêdzie trzeba to podmieniæ na inicjalizacje naszego wybranego obiektu, ale pozostawiæ pozycjê raycasta,
-                                                                                            // aby obiekt pozosta³ w miejscu w którym klikneliœmy
-                
-                //If odpowiadaj¹cy za obrócenia Eulerowskie maj¹ce na celu ustawienie obiektu wzglêdem Kamery
-                if (planeManager.GetPlane(rayHit.trackableId).alignment == PlaneAlignment.HorizontalUp)
+                foreach (ARRaycastHit rayHit in rayHits)
                 {
-                    Vector3 position = gmObj.transform.position;
-                    Vector3 cameraPosition = Camera.main.transform.position;
-                    Vector3 direction = cameraPosition - position;
-                    Vector3 targetRotationEuler = Quaternion.LookRotation(direction).eulerAngles;
-                    Vector3 scaledEuler = Vector3.Scale(targetRotationEuler,gmObj.transform.up.normalized);
-                    Quaternion targetRotation = Quaternion.LookRotation(scaledEuler);
-                    gmObj.transform.rotation = gmObj.transform.rotation * targetRotation;
+                    if (GameObject.FindGameObjectWithTag("3DObject")==null)
+                    {
+                        Pose rayPose = rayHit.pose;
+                        gmObj = Instantiate(prefabs, rayPose.position, rayPose.rotation);// <-- Tu inicjalizuje obiekt. Testowa³em na sztywnym Cube.
+                                                                                         // Przy sklejaniu apk bêdzie trzeba to podmieniæ na inicjalizacje naszego wybranego obiektu, ale pozostawiæ pozycjê raycasta,
+                                                                                         // aby obiekt pozosta³ w miejscu w którym klikneliœmy
+                        //If odpowiadaj¹cy za obrócenia Eulerowskie maj¹ce na celu ustawienie obiektu wzglêdem Kamery
+                        if (planeManager.GetPlane(rayHit.trackableId).alignment == PlaneAlignment.HorizontalUp)
+                        {
+                            Vector3 position = gmObj.transform.position;
+                            Vector3 cameraPosition = Camera.main.transform.position;
+                            Vector3 direction = cameraPosition - position;
+                            Vector3 targetRotationEuler = Quaternion.LookRotation(direction).eulerAngles;
+                            Vector3 scaledEuler = Vector3.Scale(targetRotationEuler, gmObj.transform.up.normalized);
+                            Quaternion targetRotation = Quaternion.LookRotation(scaledEuler);
+                            gmObj.transform.rotation = gmObj.transform.rotation * targetRotation;
+                            gmObj.tag = "3DObject";
+                        }
+                        //Proszê daæ Tag kamery na "MainCamera", poniewa¿ tak mi znajduje kamerê w tym skrypcie
+
+                    }
+
                 }
-                //Proszê daæ Tag kamery na "MainCamera", poniewa¿ tak mi znajduje kamerê w tym skrypcie
+            }
+        }else if(finger.currentTouch.tapCount == 1)
+        {
+            Debug.Log("KUTAAAASSS!!");
+            if(GameObject.FindGameObjectWithTag("3DObject")!=null)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("3DObject"));
             }
         }
     }
+    /*private void DoubleTapTap(EnhanedTouch.Finger finger)
+    {
+
+    }*/
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Model
+  - 3DObject
   layers:
   - Default
   - TransparentFX

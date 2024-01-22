@@ -17,6 +17,7 @@ public class SetObjectOn : MonoBehaviour
     private ARPlaneManager planeManager;
     private List<ARRaycastHit> rayHits = new List<ARRaycastHit>();
     private GameObject modelControl;
+    private ChangeTexture textureScript;
 
     GameObject gmObj;
     GameObject deleteButton;
@@ -25,6 +26,7 @@ public class SetObjectOn : MonoBehaviour
     {
         modelControl = GameObject.Find("ModelControl");
         deleteButton = GameObject.Find("ButtonDelete");
+        textureScript = GameObject.Find("TextureManager").GetComponent<ChangeTexture>();
         deleteButton.SetActive(false);
         raycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
@@ -79,6 +81,7 @@ public class SetObjectOn : MonoBehaviour
                             modelControl.transform.position = gmObj.transform.position;
                             modelControl.GetComponent<MakeChildScript>().MakeChild();
                             deleteButton.SetActive(true);
+                            textureScript.AssingModel();
                             OnDisable();
                         }
                         //Proszê daæ Tag kamery na "MainCamera", poniewa¿ tak mi znajduje kamerê w tym skrypcie

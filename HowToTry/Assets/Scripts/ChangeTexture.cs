@@ -18,25 +18,7 @@ public class ChangeTexture : MonoBehaviour
 
     private void Start()
     {
-        model = GameObject.FindGameObjectWithTag("Model");
-        if (model == null) Debug.Log("ERROR: GameObject with Tag 'Model' is not foud");
-        if (model.GetComponent<Renderer>() == null)
-        {
-            Debug.Log("INFO: Renderer added to model");
-            model.AddComponent<Renderer>();
-        }
-        if (model.GetComponent<Renderer>().material != null)
-        {
-            modelMaterial = model.GetComponent<Renderer>().material;
-            Debug.Log("INFO: Material component found successfully");
-        }
-        else
-        {
-            model.GetComponent<Renderer>().material = defaultMaterial;
-            Debug.Log("INFO: Material component added to Model");
-        }
-        currentTextureID = 0;
-        TextureIDChange(0);
+        AssingModel();
     }
 
     public void NextTexture()
@@ -70,5 +52,27 @@ public class ChangeTexture : MonoBehaviour
         }
 
 
+    }
+    public void AssingModel()
+    {
+        model = GameObject.FindGameObjectWithTag("Model");
+        if (model == null) Debug.Log("ERROR: GameObject with Tag 'Model' is not foud");
+        if (model.GetComponent<Renderer>() == null)
+        {
+            Debug.Log("INFO: Renderer added to model");
+            model.AddComponent<Renderer>();
+        }
+        if (model.GetComponent<Renderer>().material != null)
+        {
+            modelMaterial = model.GetComponent<Renderer>().material;
+            Debug.Log("INFO: Material component found successfully");
+        }
+        else
+        {
+            model.GetComponent<Renderer>().material = defaultMaterial;
+            Debug.Log("INFO: Material component added to Model");
+        }
+        currentTextureID = 0;
+        TextureIDChange(0);
     }
 }

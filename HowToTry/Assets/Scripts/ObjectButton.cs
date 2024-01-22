@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ObjectButton : MonoBehaviour
 {
-    [SerializeField] GameObject model3d;
+    [SerializeField] private static GameObject model3d;
+    [SerializeField] private int modelID;
+
 
     public void BtnClicked()
     {
-        Instantiate(model3d);
+        holdID.id = modelID;
         
-        SceneManager.LoadScene("Patryk2");
+        SceneManager.LoadScene("PlaceAndStand");
     }
     
+
 }

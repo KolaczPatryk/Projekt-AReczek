@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 4
 --- !u!114 &113221535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 1
 --- !u!1 &254891703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5892,7 +5892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 6
 --- !u!114 &383521192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6862,7 +6862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 8
 --- !u!114 &770064250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7203,7 +7203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 7
 --- !u!114 &971946647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7425,7 +7425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 5
 --- !u!114 &1079171267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8693,7 +8693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 3
 --- !u!114 &1382681232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9422,7 +9422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 2
 --- !u!1 &1639313423
 GameObject:
   m_ObjectHideFlags: 0
@@ -15013,7 +15013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869981481e481e4b900488910e36772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: 
+  modelID: 0
 --- !u!1 &2015854188
 GameObject:
   m_ObjectHideFlags: 0

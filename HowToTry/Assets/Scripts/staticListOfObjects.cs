@@ -11,19 +11,19 @@ public class staticListOfObjects : MonoBehaviour
 {
     [SerializeField]
     public List<Object> models;
-
+    private Object choosenOBJ;
     void Start()
     {
         LoadNewModelsToList();
         string toChoose = holdURL.linkURL;
-        Object choosenOBJ = FindModel(toChoose);
-        if(choosenOBJ != null)
-        {
-            InstantiateModel(choosenOBJ);
-        }
+        choosenOBJ = FindModel(toChoose);
+        //if (choosenOBJ != null)
+        //{
+        //    InstantiateModel(choosenOBJ);
+        //}
     }
     
-    Object FindModel(string choosenOne)
+   Object FindModel(string choosenOne)
     {
         foreach(Object elem in models)
         {
@@ -43,7 +43,7 @@ public class staticListOfObjects : MonoBehaviour
         }
         else
         {
-            Debug.Log("No i chuj no i czeœæ");
+            Debug.Log("ERROR: Object does not exist");
         }
     }
 
@@ -61,18 +61,9 @@ public class staticListOfObjects : MonoBehaviour
         }
     }
 
-    /*public Object folder;
-    string URL = holdURL.linkURL;
-    //Na przysz³oœæ. Mo¿na referowaæ do folderów w Unity, ale nie chce mi siê z tym pierdzieliæ xD
-    void Start()
+    public Object GetObject()
     {
-        Debug.Log("KUTAS "+folder);
-        ListObjects();
+        return choosenOBJ;
     }
 
-    void ListObjects()
-    {
-        Debug.Log("KUTAS "+Application.dataPath);
-        //string path = folder.;
-    }*/
 }

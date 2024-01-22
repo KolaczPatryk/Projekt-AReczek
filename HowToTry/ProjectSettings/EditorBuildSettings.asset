@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gonet/QR_Scanner.unity
     guid: 505c8708398fe284f9af112e4535e752
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gonet/PlaceAndStand.unity
     guid: d62d28e30570bca4eb62f776687b55dc
   m_configObjects:

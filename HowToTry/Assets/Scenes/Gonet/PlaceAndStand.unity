@@ -412,7 +412,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a10f7257185354c95eb986b6738c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
+  prefabs:
+  - {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
+  - {fileID: 7326473890874313261, guid: 050aa93923cce3c4db8bf52eab4d85d8, type: 3}
+  - {fileID: 919132149155446097, guid: fb6201bf91acbd54e8600f95ad73621c, type: 3}
+  - {fileID: 919132149155446097, guid: 3d52e37e640885446a605b525f1162e2, type: 3}
+  - {fileID: 919132149155446097, guid: 3082a599e4bd7fa47bc3f57bc67d5519, type: 3}
+  - {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
+  - {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
+  - {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
+  - {fileID: 4134202525474032667, guid: 03b0d68e1dea65947ac9f35ac12a6022, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

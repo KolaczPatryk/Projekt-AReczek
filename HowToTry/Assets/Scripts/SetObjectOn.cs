@@ -10,7 +10,8 @@ using EnhanedTouch = UnityEngine.InputSystem.EnhancedTouch;
 public class SetObjectOn : MonoBehaviour
 {
     [SerializeField]
-    private GameObject prefabs;
+    private List<GameObject> prefabs;
+    private int prefabID;
 
     private ARRaycastManager raycastManager;
     private ARPlaneManager planeManager;
@@ -22,6 +23,7 @@ public class SetObjectOn : MonoBehaviour
     {
         raycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
+        prefabID = holdID.id;
 
     }
 
@@ -55,7 +57,7 @@ public class SetObjectOn : MonoBehaviour
                     if (GameObject.FindGameObjectWithTag("3DObject")==null)
                     {
                         Pose rayPose = rayHit.pose;
-                        gmObj = Instantiate(prefabs, rayPose.position, rayPose.rotation);// <-- Tu inicjalizuje obiekt. Testowa³em na sztywnym Cube.
+                        gmObj = Instantiate(prefabs[prefabID], rayPose.position, rayPose.rotation);// <-- Tu inicjalizuje obiekt. Testowa³em na sztywnym Cube.
                                                                                          // Przy sklejaniu apk bêdzie trzeba to podmieniæ na inicjalizacje naszego wybranego obiektu, ale pozostawiæ pozycjê raycasta,
                                                                                          // aby obiekt pozosta³ w miejscu w którym klikneliœmy
                         //If odpowiadaj¹cy za obrócenia Eulerowskie maj¹ce na celu ustawienie obiektu wzglêdem Kamery
@@ -78,13 +80,15 @@ public class SetObjectOn : MonoBehaviour
             }
         }else if(finger.currentTouch.tapCount == 1)
         {
-            Debug.Log("KUTAAAASSS!!");
+            Debug.Log("3D Object destroyed");
             if(GameObject.FindGameObjectWithTag("3DObject")!=null)
             {
                 Destroy(GameObject.FindGameObjectWithTag("3DObject"));
             }
         }
     }
+
+
     /*private void DoubleTapTap(EnhanedTouch.Finger finger)
     {
 

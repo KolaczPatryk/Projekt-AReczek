@@ -86,7 +86,7 @@ public class QRGenerator : MonoBehaviour
         {
             if (path == null)
             {
-                Debug.Log("D00pa");
+                Debug.Log("Path not found");
             }
             else
             {

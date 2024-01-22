@@ -12,4 +12,10 @@ public class MakeChildScript : MonoBehaviour
         model = GameObject.FindGameObjectWithTag("Model");
         model.transform.parent = this.transform;
     }
+
+    public void MakeChild()
+    {
+        model = GameObject.FindGameObjectWithTag("Model");
+        model.transform.parent = this.transform;
+    }
 }

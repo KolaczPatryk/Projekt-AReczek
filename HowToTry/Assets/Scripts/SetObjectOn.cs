@@ -16,11 +16,16 @@ public class SetObjectOn : MonoBehaviour
     private ARRaycastManager raycastManager;
     private ARPlaneManager planeManager;
     private List<ARRaycastHit> rayHits = new List<ARRaycastHit>();
+    private GameObject modelControl;
 
     GameObject gmObj;
+    GameObject deleteButton;
 
     private void Awake()
     {
+        modelControl = GameObject.Find("ModelControl");
+        deleteButton = GameObject.Find("ButtonDelete");
+        deleteButton.SetActive(false);
         raycastManager = GetComponent<ARRaycastManager>();
         planeManager = GetComponent<ARPlaneManager>();
         prefabID = holdID.id;
@@ -54,7 +59,7 @@ public class SetObjectOn : MonoBehaviour
             {
                 foreach (ARRaycastHit rayHit in rayHits)
                 {
-                    if (GameObject.FindGameObjectWithTag("3DObject")==null)
+                    if (GameObject.FindGameObjectWithTag("Model")==null)
                     {
                         Pose rayPose = rayHit.pose;
                         gmObj = Instantiate(prefabs[prefabID], rayPose.position, rayPose.rotation);// <-- Tu inicjalizuje obiekt. Testowa³em na sztywnym Cube.
@@ -70,7 +75,11 @@ public class SetObjectOn : MonoBehaviour
                             Vector3 scaledEuler = Vector3.Scale(targetRotationEuler, gmObj.transform.up.normalized);
                             Quaternion targetRotation = Quaternion.LookRotation(scaledEuler);
                             gmObj.transform.rotation = gmObj.transform.rotation * targetRotation;
-                            gmObj.tag = "3DObject";
+                            gmObj.tag = "Model";
+                            modelControl.transform.position = gmObj.transform.position;
+                            modelControl.GetComponent<MakeChildScript>().MakeChild();
+                            deleteButton.SetActive(true);
+                            OnDisable();
                         }
                         //Proszê daæ Tag kamery na "MainCamera", poniewa¿ tak mi znajduje kamerê w tym skrypcie
 
@@ -80,14 +89,24 @@ public class SetObjectOn : MonoBehaviour
             }
         }else if(finger.currentTouch.tapCount == 1)
         {
-            Debug.Log("3D Object destroyed");
-            if(GameObject.FindGameObjectWithTag("3DObject")!=null)
-            {
-                Destroy(GameObject.FindGameObjectWithTag("3DObject"));
-            }
+            //Debug.Log("3D Object destroyed");
+            //if(GameObject.FindGameObjectWithTag("Model")!=null)
+            //{
+            //    Destroy(GameObject.FindGameObjectWithTag("Model"));
+            //}
         }
     }
 
+    public void DeleteObject()
+    {
+        if (GameObject.FindGameObjectsWithTag("Model") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Model"));
+            Debug.Log("INFO: 3D Object destroyed");
+            deleteButton.SetActive(false);
+            OnEnable();
+        }
+    }
 
     /*private void DoubleTapTap(EnhanedTouch.Finger finger)
     {

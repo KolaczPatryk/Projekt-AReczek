@@ -34,7 +34,7 @@ public class TakeARPhoto : MonoBehaviour
         }
     }
 
-    void CapturePhoto()
+    public void CapturePhoto()
     {
         StartCoroutine(TakeScreenshot());
     }

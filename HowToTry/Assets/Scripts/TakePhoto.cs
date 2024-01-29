@@ -11,12 +11,10 @@ public class TakeARPhoto : MonoBehaviour
     public Camera arCamera;
     public Button captureButton;
     public string cameraDirectory;
-    //private string cameraDirectory;
     
 
     void Start()
     {
-        //cameraDirectory = Application.persistentDataPath;
         // SprawdŸ, czy ARCameraManager zosta³ przypisany
         if (arCameraManager == null)
         {
@@ -56,21 +54,6 @@ public class TakeARPhoto : MonoBehaviour
 
         // Mo¿esz tak¿e przetworzyæ dalej lub wyœwietliæ miniaturê, itp.
     }
-    
-    //void SaveScreenshot(Texture2D texture)
-    //{
-    //    // Generuj unikaln¹ nazwê pliku na podstawie daty i godziny
-    //    string fileName = "AR_Screenshot_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
-
-    //    // Zapisz teksturê jako plik PNG
-    //    byte[] bytes = texture.EncodeToPNG();
-    //    System.IO.File.WriteAllBytes(System.IO.Path.Combine(Application.persistentDataPath, fileName), bytes);
-
-
-
-
-    //    Debug.Log("INFO: Zapisano zdjêcie w " + cameraDirectory + "/" + fileName);
-    //}
 
     void SaveScreenshot(Texture2D texture)
     {
@@ -101,16 +84,6 @@ public class TakeARPhoto : MonoBehaviour
     {
         // Uzyskaj obraz z kamery AR
         //Camera arCamera = arCameraManager.GetComponent<Camera>();
-
-        //if (arCamera == null)
-        //{
-        //    Debug.LogError("ERROR: Nie mo¿na znaleŸæ komponentu Camera w ARCameraManager.");
-        //    return null;
-        //}
-
-        // Utwórz now¹ teksturê i wczytaj dane pikseli z aktualnej klatki
-        //RenderTexture renderTexture = arCamera.targetTexture;
-        //RenderTexture renderTexture = arCamera.targetTexture;0
         Texture2D texture = new Texture2D(Screen.width, Screen.height);
         texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         texture.Apply();

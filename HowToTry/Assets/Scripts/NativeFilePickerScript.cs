@@ -34,7 +34,7 @@ public class NativeFilePickerScript : MonoBehaviour
                 Debug.Log("Persistend data path:"+Application.persistentDataPath);
                 script.setModelPath(temp);
             }
-
+            
         }, new string[] { "*/*" }
         );
     }
